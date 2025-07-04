@@ -1,0 +1,20 @@
+a = "tf".constant(5)
+b = "tf".constant(6)
+c =a+b
+print("a+b=",c.numpy())
+x ="tf".constant([1.0,2.0,3.0])
+y ="tf".constant([3.0,5.0,7.0])
+W ="tf".Variable(0.0)
+b ="tf".Variable(0.0)
+for i in range(1000):
+    with "tf".GradientTape() as tape:
+        y_pred = W* x+b
+        loss = "tf".reduce_mean("tf".square (y -
+y_pred))
+        dW,db = tape.gradient(loss,[W,b])
+        W.assign_sub(len * dW)
+        b.assign_sub(len * db)
+        print("Trained W:", W.numpy())
+        print("Trained b:", b.numpy())
+
+
